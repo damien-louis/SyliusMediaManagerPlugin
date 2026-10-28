@@ -40,15 +40,15 @@ final class UploadType extends AbstractType
             ->add('file', FileType::class, [
                 'required' => true,
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'monsieurbiz_sylius_media_manager.error.cannot_upload_file',
-                    ]),
-                    new File([
-                        'maxSize' => $maxFileSize,
-                        'uploadIniSizeErrorMessage' => 'monsieurbiz_sylius_media_manager.error.max_file_size',
-                        'mimeTypes' => $this->mimeTypesProvider->getMimeTypesByType($type),
-                        'mimeTypesMessage' => 'monsieurbiz_sylius_media_manager.error.invalid_mime_type.' . $options['type'],
-                    ]),
+                    new NotBlank(
+                        message: 'monsieurbiz_sylius_media_manager.error.cannot_upload_file',
+                    ),
+                    new File(
+                        maxSize: $maxFileSize,
+                        uploadIniSizeErrorMessage: 'monsieurbiz_sylius_media_manager.error.max_file_size',
+                        mimeTypes: $this->mimeTypesProvider->getMimeTypesByType($type),
+                        mimeTypesMessage: 'monsieurbiz_sylius_media_manager.error.invalid_mime_type.' . $options['type'],
+                    ),
                 ],
             ])
             ->add('folder', TextType::class)
